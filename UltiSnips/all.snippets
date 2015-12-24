@@ -1,0 +1,50 @@
+global !p
+from snippet_helpers import *
+endglobal
+
+# action related {{{1
+snippet p_  "|PHE|date" i
+|PHE|`date +%Y-%m-%d`
+endsnippet
+
+# date/time {{{1
+snippet t_      "HH:MM" i
+`date +%H:%M`
+endsnippet
+
+snippet d_      "YYYY-MM-DD" i
+`date +%Y-%m-%d`
+endsnippet
+
+snippet w_  "Week nr" !b
+`date +%V`
+endsnippet
+
+# Journal entries {{{1
+snippet j_ "Weekly Journal" b
+# ${1:`date +%Y`} week ${2:`date +%V`} (PHE) +journal
+// vim:sts=2 sw=2 smartindent:
+
+# Mon, (`!p snip.rv = ywd_isodate(t[1],t[2],1)`)
+o time write (PHE) +rtz
+o task review (PHE) +rtz
+$0
+
+# Tue, (`!p snip.rv = ywd_isodate(t[1],t[2],2)`)
+
+# Wed, (`!p snip.rv = ywd_isodate(t[1],t[2],3)`)
+
+# Thu, (`!p snip.rv = ywd_isodate(t[1], t[2], 4)`)
+
+# Fri, (`!p snip.rv = ywd_isodate(t[1], t[2], 5)`)
+
+endsnippet
+
+snippet cc_ "contact" b
+${1:PHE/\S+//g} `!p snip.rv=addr(t[1])`
+endsnippet
+
+snippet "c(\S+)" "contact query" r
+`!p snip.rv=addr(match.group(1))`
+endsnippet
+

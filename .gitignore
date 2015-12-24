@@ -1,0 +1,22 @@
+bundle
+cache
+cache/**
+tmp/
+scr/
+.git/**
+*~
+**/*~
+*.swp
+*.pyc
+**/*.pyc
+
+# ignore tags created for help texts
+doc/tags
+**/tags
+tags
+
+# No python bytecode files
+**/*.pyc
+
+.netrwhist
+

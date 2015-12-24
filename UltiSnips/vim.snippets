@@ -1,0 +1,20 @@
+snippet "f(u?(n?))!" "standard reloadable vim function" br
+function! ${1:func_name}(${2:func_args})
+" ${3:func_description}
+${0:func_body}
+endfunction
+endsnippet
+
+snippet vph "vim plugin header" b
+" @Author:      padh <git.padh at gmail com)>
+" @Created:     `!v strftime("%Y-%m-%d")`
+" @Updated:     `!v strftime("%Y-%m-%d")`
+" @License:     Same terms as Vim itself (see :he license)
+" @Revision:    1
+" @Website:     https://github.com/padh
+" @Filename:    `!v expand("%:t")`
+
+${0: Start coding!}
+
+endsnippet
+
