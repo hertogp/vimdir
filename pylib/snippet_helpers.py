@@ -16,12 +16,9 @@ def ywd_isodate(year, week, dow):
     except Exception, e:
         return "YYYY-MM-DD?"
 
-ADDR = {'PHE.cell':  '06-20617005',
-        'PHE.mail1': 'pieter@dwark.nl',
-        'PHE.mail2': 'pieter.denhertog@routz.nl',
-        'PHE.mail3': 'pieter.denhertog@prorail.nl',
-        'PHE.mail4': 'ptr@nedportal.nl',
-        'PHE.phone': '076-123234345',
+ADDR = {'PHE.cell':  '06-10111001',
+        'PHE.mail1': 'pieter@nowhere.eu',
+        'PHE.mail2': 'pieter@work.eu',
         'QHE1': '123123123',
         'QRE1': '567567567567'
         }
