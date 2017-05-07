@@ -7,4 +7,4 @@
 " - compile the current buffer using the full absolute path to it's file (%)
 "
 "CompilerSet makeprg=pandoc\ -f\ markdown+hard_line_breaks+compact_definition_lists+lists_without_preceding_blankline+pipe_tables\ -t\ latex\ --template\ notes\ -o\ %:r.pdf\ %
-CompilerSet makeprg=pandoc\ --filter\ imagine\ -f\ markdown+line_blocks+compact_definition_lists+lists_without_preceding_blankline+pipe_tables\ -t\ latex\ --template\ notes\ -o\ %:r.pdf\ %
+CompilerSet makeprg=pandoc\ --filter\ pandoc-imagine\ -f\ markdown+line_blocks+compact_definition_lists+lists_without_preceding_blankline+pipe_tables\ -t\ latex\ --template\ notes\ -o\ %:r.pdf\ %
