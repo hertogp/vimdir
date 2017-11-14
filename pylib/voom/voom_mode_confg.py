@@ -35,10 +35,11 @@ def hook_makeOutline(VO, blines):
         if not L: continue                                     # skip empty
         elif L.startswith('! -- '): L = L.replace('! --','>>') # HEADLINE
         elif not L[0].isalpha(): continue                      # skip indents
-        else: L = L.rsplit('!')[0].rstrip()                    # cleanup line
+        else: L = L.rsplit('!')[0].rstrip().lower()            # cleanup line
+
         if len(L) < 2: continue               # skip really short lines
-        L = L.lower()                         # outline will be lower cased
-        W = L.split()[1:3] if L.startswith('no ') else L.split()[0:2]
+        # L = L.lower()                       # see lower() above, outline will be lower cased
+        # W = L.split()[1:3] if L.startswith('no ') else L.split()[0:2]
         W = L.split()[1:5] if L.startswith('no ') else L.split()[0:4]
         if not W: continue
 
@@ -47,13 +48,17 @@ def hook_makeOutline(VO, blines):
         if W[0].startswith('int'):
             # int <type>x/y/z0..zn fold into int <type>x/y
             sig = '%s %s'%(W[0],W[1].rstrip('0123456789'))
+            # abbreviate long interface-type-names
             L = L.replace('interface','int')
             L = L.replace('fastethernet','fa')
+            L = L.replace('tengigabitethernet','te')
             L = L.replace('gigabitethernet','gi')
         elif W[0].startswith('access-list'):
             sig = '%s %s'% (W[0],W[1])
             L = L.replace('access-list','acl')
         elif W[0].startswith('static'):
+            sig = '%s %s'% (W[0],W[1])
+        elif W[0].startswith('router'):
             sig = '%s %s'% (W[0],W[1])
         else:
             sig = W[0]

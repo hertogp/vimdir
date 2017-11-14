@@ -1,1 +1,1 @@
-article|pdf '--toc' '--template=mm.latex'
+notes|pdf --template notes -f markdown+lists_without_preceding_blankline+definition_lists+pipe_tables

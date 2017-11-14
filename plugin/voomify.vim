@@ -9,7 +9,7 @@ au BufWinEnter * call My_Voom_Restore()
 "au BufWinLeave * echomsg "BufWinLeave " . bufname('%')
 
 "we set mapping in .vimrc
-"nmap <silent> <leaver>v :call My_Voom_Toggle()<CR>
+"nmap <silent> <leader>v :call My_Voom_Toggle()<CR>
 
 let s:FT2MARKUP={'rst' : 'wiki',
             \'rest'    : 'wiki',
@@ -56,7 +56,6 @@ fun! My_Voom_Restore()
         call My_Voom_Outline()
     endif
 endfunction
-
 
 fun! My_Voom_Outline()
     "create filetype specific voom treebuf, mark body buf as voomified
