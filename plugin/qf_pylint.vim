@@ -63,9 +63,6 @@ function! s:qf_fix(qfl,bufnr) "{{{1
     for item in a:qfl
         let item.bufnr = a:bufnr
         let item.col = item.col < 0 ? 1 : item.col + 1
-        for [key, value] in items(item)
-          echomsg "key,value " . key . ", " . value
-        endfor
     endfor
     return a:qfl
 endfunction
