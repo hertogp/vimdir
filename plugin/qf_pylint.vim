@@ -45,10 +45,17 @@ function! <SID>MPL() "{{{1
 
   " qf-items need fixing: colnrs are off by one and we add the pyfile's bufnr
   let qfl = s:qf_fix(getqflist(),fbufnr)
-  " set the qf-item list, replacing 'r' any existing list
+  " set the qf item list, replacing 'r' any existing list
   call setqflist(filter(qfl, 's:qf_filter(v:val)'), 'r')
-  " set qf title
-  call setqflist([], 'r', {'title': 'pylint3 ' . expand("%") . ' [' . len(qfl) . 'x]'})
+  " set qf window title
+  let h = {}
+  for itm in qfl
+      let h[itm.type] = get(h,itm.type,0) + 1
+  endfor
+  let msg = join(map(items(h),'join(reverse(v:val),"")'),',')
+  let msg = ' - [' . msg . ']'
+  let msg = msg . ' - ' . len(qfl) . ' total'
+  call setqflist([], 'r', {'title': 'pylint3 ' . expand("%") . msg})
 
   set nolazyredraw
   redraw!
